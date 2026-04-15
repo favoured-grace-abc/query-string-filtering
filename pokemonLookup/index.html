@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon List | RAD5</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen">
+
+  <header class="bg-blue-700 text-white shadow-md">
+    <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between" aria-label="Main Navigation">
+      <span class="text-xl font-bold tracking-wide">PokéApp</span>
+      <ul class="flex gap-6 text-sm font-medium">
+        <li><a href="index.html" class="underline underline-offset-4">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-10">
+    <h1 class="text-3xl font-bold mb-2">Pokemon</h1>
+    <p class="text-gray-500 mb-8">Click any card to preview. Then open its full page.</p>
+
+    <!-- Loading state -->
+    <div id="loading" class="text-center py-20 text-gray-400 text-lg">
+      Loading Pokemon...
+    </div>
+
+    <!-- Error state -->
+    <div id="error-msg" class="hidden bg-red-50 text-red-600 border border-red-200 rounded-lg p-4 mb-6"></div>
+
+    <!-- Pokemon grid -->
+    <div id="pokemon-grid" class="hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <!-- Cards injected here by JS -->
+    </div>
+
+    <!-- Pagination -->
+    <div id="pagination" class="hidden flex justify-center gap-4 mt-10">
+      <button id="prev-btn" class="px-5 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+        Previous
+      </button>
+      <span id="page-info" class="px-4 py-2 text-sm text-gray-500 self-center"></span>
+      <button id="next-btn" class="px-5 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700">
+        Next
+      </button>
+    </div>
+  </main>
+
+  <!-- MODAL: Pokemon quick preview -->
+  <dialog
+    id="pokemon-modal"
+    class="rounded-2xl shadow-2xl p-0 w-full max-w-sm backdrop:bg-black/60 backdrop:backdrop-blur-sm"
+  >
+    <div class="bg-white rounded-2xl overflow-hidden">
+
+      <!-- Modal header -->
+      <div id="modal-header" class="bg-blue-600 px-6 pt-6 pb-2 text-center">
+        <img id="modal-sprite" src="" alt="" class="w-28 h-28 mx-auto drop-shadow-lg">
+        <h2 id="modal-name" class="text-white text-2xl font-bold capitalize mt-1"></h2>
+      </div>
+
+      <!-- Modal body -->
+      <div class="px-6 py-5 space-y-3">
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Height</span>
+          <span id="modal-height" class="font-medium"></span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Weight</span>
+          <span id="modal-weight" class="font-medium"></span>
+        </div>
+        <div class="text-sm">
+          <span class="text-gray-500">Abilities</span>
+          <ul id="modal-abilities" class="mt-1 flex flex-wrap gap-2"></ul>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="px-6 pb-5 flex justify-between items-center gap-3">
+        <button
+          id="modal-close"
+          class="flex-1 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50"
+        >
+          Close
+        </button>
+        <a
+          id="modal-open-link"
+          href="#"
+          class="flex-1 py-2 bg-blue-600 text-white text-center rounded-lg text-sm font-medium hover:bg-blue-700"
+        >
+          Open Full Page
+        </a>
+      </div>
+
+    </div>
+  </dialog>
+
+  <script src="js/index.js"></script>
+</body>
+</html>

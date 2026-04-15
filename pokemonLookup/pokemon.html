@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon Detail | RAD5</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen">
+
+  <header class="bg-blue-700 text-white shadow-md">
+    <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between" aria-label="Main Navigation">
+      <span class="text-xl font-bold tracking-wide">PokéApp</span>
+      <ul class="flex gap-6 text-sm font-medium">
+        <li><a href="index.html" class="hover:underline underline-offset-4">Back to list</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-2xl mx-auto px-6 py-10">
+
+    <!-- Loading state -->
+    <div id="loading" class="text-center py-20 text-gray-400 text-lg">
+      Loading Pokemon...
+    </div>
+
+    <!-- Error state -->
+    <div id="error-msg" class="hidden bg-red-50 text-red-600 border border-red-200 rounded-lg p-4"></div>
+
+    <!-- Detail card -->
+    <div id="detail-card" class="hidden bg-white rounded-2xl shadow-md overflow-hidden">
+
+      <!-- Header with sprite -->
+      <div class="bg-blue-600 px-6 pt-8 pb-4 text-center">
+        <img id="detail-sprite" src="" alt="" class="w-36 h-36 mx-auto drop-shadow-xl">
+        <h1 id="detail-name" class="text-white text-3xl font-bold capitalize mt-2"></h1>
+        <p id="detail-id" class="text-blue-200 text-sm mt-1"></p>
+      </div>
+
+      <!-- Stats body -->
+      <div class="p-6 space-y-5">
+
+        <!-- Basic stats -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-gray-50 rounded-xl p-4 text-center">
+            <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Height</p>
+            <p id="detail-height" class="text-xl font-bold text-gray-800"></p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-4 text-center">
+            <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Weight</p>
+            <p id="detail-weight" class="text-xl font-bold text-gray-800"></p>
+          </div>
+        </div>
+
+        <!-- Abilities -->
+        <div>
+          <p class="text-xs text-gray-400 uppercase tracking-wide mb-2">Abilities</p>
+          <ul id="detail-abilities" class="flex flex-wrap gap-2"></ul>
+        </div>
+
+        <!-- Base stats bar chart -->
+        <div>
+          <p class="text-xs text-gray-400 uppercase tracking-wide mb-3">Base Stats</p>
+          <ul id="detail-stats" class="space-y-2"></ul>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/pokemon.js"></script>
+</body>
+</html>
